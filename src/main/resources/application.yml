@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: product-reviewer
+
+  datasource:
+    username: ${POSTGRES_USER:postgres}
+    url: ${POSTGRES_CONNECTION_STRING:jdbc:postgresql://127.0.0.1:5432/postgres}
+    password: ${POSTGRES_PASSWORD:unidunite}
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        "[format_sql]": 'true'
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: 'true'
