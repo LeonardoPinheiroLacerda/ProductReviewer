@@ -1,5 +1,6 @@
 package com.leonardo.productreviewer.models;
 
+import com.leonardo.productreviewer.models.PKs.ProductPropertyPK;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @EqualsAndHashCode(of = {"id"})
 
 @Entity
+@IdClass(ProductPropertyPK.class)
 public class ProductProperty {
 
     @Id
