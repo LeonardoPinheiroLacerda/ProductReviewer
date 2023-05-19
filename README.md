@@ -2,6 +2,12 @@
 
 Demonstration project for exercise using spring boot GraphQL implementation on backend and React.js on frontend.
 
+## Requeriments
+
+You will need to have installed on your machine:
+ - Java (at least version 17)
+ - Docker (with docker-compose configured)
+
 ## How to run
 
 First download or clone this git repository:
