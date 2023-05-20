@@ -1,3 +1,4 @@
 type Query {
     allCategories: [Category]
+    getById(id :ID): Category
 }

@@ -1,3 +1,5 @@
 type Mutation {
-    addCategory(categoryInput: CategoryInput): Category
+    createCategory(categoryInput: CategoryInput): Category
+    updateCategory(id: ID, categoryInput: CategoryInput): Category
+    deleteCategory(id: ID): ID
 }
