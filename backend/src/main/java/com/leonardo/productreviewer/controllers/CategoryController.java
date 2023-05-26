@@ -18,12 +18,12 @@ import java.util.UUID;
 public record CategoryController(CategoryService service) {
 
     @QueryMapping
-    public List<Category> allCategories() {
+    public List<Category> getAllCategories() {
         return service.getAll();
     }
 
     @QueryMapping
-    public Category getById(@Argument UUID id) {
+    public Category getCategoryById(@Argument UUID id) {
         return service.getById(id);
     }
 

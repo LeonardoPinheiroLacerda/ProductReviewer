@@ -1,4 +1,7 @@
 type Query {
-    allCategories: [Category]
-    getById(id :ID): Category
+    getAllCategories: [Category]
+    getCategoryById(id :ID): Category
+
+    getAllProperties: [Property]
+    getPropertyById(id :ID): Property
 }
