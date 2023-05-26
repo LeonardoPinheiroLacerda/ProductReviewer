@@ -22,10 +22,10 @@ public class Category {
     @Column(length = 64, nullable = false, unique = true)
     private String description;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Product> products;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Property> properties;
 
 }

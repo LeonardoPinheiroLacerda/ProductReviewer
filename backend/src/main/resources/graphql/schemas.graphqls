@@ -1,6 +1,7 @@
 type Category {
     id: ID!
     description: String!
+    properties: [Property] 
 }
 
 type Product {
@@ -8,4 +9,19 @@ type Product {
     description: String!
     price: Float
     category: Category
+}
+
+type Property {
+    id: ID!
+    name :String!
+    defaultValue :String!
+    type :Type!
+    category: Category
+}
+
+enum Type {
+    INTEGER
+    DOUBLE
+    BOOLEAN
+    STRING
 }

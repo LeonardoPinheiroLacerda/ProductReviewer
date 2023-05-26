@@ -1,3 +1,10 @@
 input CategoryInput {
     description :String!
 }
+
+input PropertyInput {
+    name :String!
+    defaultValue :String!
+    type :Type!
+    categoryId: String!
+}
