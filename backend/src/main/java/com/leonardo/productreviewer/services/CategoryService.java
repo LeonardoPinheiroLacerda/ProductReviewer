@@ -24,8 +24,7 @@ public record CategoryService(CategoryRepository repository) implements CrudServ
 
     @Override
     public Category update(UUID id, CategoryInput input) {
-        Category category = repository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Categoria de ID informado não pode ser encontrada."));
+        Category category = getById(id);
         category.setDescription(input.description());
         category = repository.save(category);
         return category;
@@ -33,8 +32,7 @@ public record CategoryService(CategoryRepository repository) implements CrudServ
 
     @Override
     public UUID delete(UUID id) {
-        repository.delete(repository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Categoria de ID informado não pode ser encontrada.")));
+        repository.delete(getById(id));
         return id;
     }
 
@@ -44,7 +42,6 @@ public record CategoryService(CategoryRepository repository) implements CrudServ
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria de ID informado não pode ser encontrada."));
     }
 
-    @org.jetbrains.annotations.NotNull
     @Override
     public List<Category> getAll() {
         return repository.findAll();
