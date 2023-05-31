@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public record CategoryService(CategoryRepository repository) {
+public record CategoryService(CategoryRepository repository) implements CrudService<Category, UUID, CategoryInput> {
 
+    @Override
     public Category create(CategoryInput input) {
         return repository.save(
                 Category
@@ -21,6 +22,7 @@ public record CategoryService(CategoryRepository repository) {
         );
     }
 
+    @Override
     public Category update(UUID id, CategoryInput input) {
         Category category = repository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria de ID informado não pode ser encontrada."));
@@ -29,17 +31,21 @@ public record CategoryService(CategoryRepository repository) {
         return category;
     }
 
+    @Override
     public UUID delete(UUID id) {
         repository.delete(repository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria de ID informado não pode ser encontrada.")));
         return id;
     }
 
+    @Override
     public Category getById(UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria de ID informado não pode ser encontrada."));
     }
 
+    @org.jetbrains.annotations.NotNull
+    @Override
     public List<Category> getAll() {
         return repository.findAll();
     }

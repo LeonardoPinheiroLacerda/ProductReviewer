@@ -2,16 +2,13 @@ package com.leonardo.productreviewer.controllers;
 
 import com.leonardo.productreviewer.inputs.CategoryInput;
 import com.leonardo.productreviewer.models.Category;
-import com.leonardo.productreviewer.models.Property;
 import com.leonardo.productreviewer.services.CategoryService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Controller
