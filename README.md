@@ -1,4 +1,4 @@
-# Product Reviewer CMS
+# Product Reviewer
 
 Demonstration project for exercise using spring boot GraphQL implementation on backend and React.js on frontend.
 
