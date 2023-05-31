@@ -24,7 +24,7 @@ public record CategoryService(CategoryRepository repository) implements CrudServ
 
     @Override
     public Category update(UUID id, CategoryInput input) {
-        Category category = getById(id);
+        Category category = this.getById(id);
         category.setDescription(input.description());
         category = repository.save(category);
         return category;
@@ -32,7 +32,7 @@ public record CategoryService(CategoryRepository repository) implements CrudServ
 
     @Override
     public UUID delete(UUID id) {
-        repository.delete(getById(id));
+        repository.delete(this.getById(id));
         return id;
     }
 

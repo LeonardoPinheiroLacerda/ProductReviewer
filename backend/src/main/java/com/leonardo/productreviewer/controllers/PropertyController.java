@@ -28,4 +28,14 @@ public record PropertyController (PropertyService service){
     public Property createProperty(@Argument PropertyInput propertyInput) {
         return service.create(propertyInput);
     }
+
+    @MutationMapping
+    public Property updateProperty(@Argument UUID id, @Argument PropertyInput propertyInput) {
+        return service.update(id, propertyInput);
+    }
+
+    @MutationMapping
+    public UUID deleteProperty(@Argument UUID id) {
+        return service.delete(id);
+    }
 }

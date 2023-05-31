@@ -4,4 +4,6 @@ type Mutation {
     deleteCategory(id: ID): ID
 
     createProperty(propertyInput: PropertyInput): Property
+    updateProperty(id: ID, propertyInput: PropertyInput): Property
+    deleteProperty(id: ID): ID
 }

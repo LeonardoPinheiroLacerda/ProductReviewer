@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Data
-@EqualsAndHashCode(of = {"id"})
+@EqualsAndHashCode(of = {"product", "property"})
 
 @Entity
 @IdClass(ProductPropertyPK.class)
@@ -24,7 +24,7 @@ public class ProductProperty {
     @JoinColumn(name = "property_id")
     private Property property;
 
-    @Column(length = 255, nullable = false)
+    @Column(nullable = false)
     private String value;
 
 }
