@@ -47,7 +47,17 @@ public class ExceptionResolver extends DataFetcherExceptionResolverAdapter {
                     .location(env.getField().getSourceLocation())
                     .build();
 
-        } else {
+        } else if(ex instanceof MissingDataException){
+
+            return GraphqlErrorBuilder.newError()
+                    .errorType(ErrorType.BAD_REQUEST)
+                    .message(ex.getMessage())
+                    .path(env.getExecutionStepInfo().getPath())
+                    .location(env.getField().getSourceLocation())
+                    .build();
+
+        }
+        else {
             return super.resolveToSingleError(ex, env);
         }
 
@@ -56,7 +66,7 @@ public class ExceptionResolver extends DataFetcherExceptionResolverAdapter {
 
     private Map<String, String> constraintsMessages() {
         Map<String, String> messages = new HashMap<>();
-        messages.put("category_description_key", "Já existe uma categoria com este nome.");
+        messages.put("uk_3x7l6yk1oxdxmdh4am3yq2y38", "Já existe uma categoria com este nome.");
         return messages;
     }
 }

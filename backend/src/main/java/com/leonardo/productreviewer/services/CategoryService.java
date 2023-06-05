@@ -4,16 +4,22 @@ import com.leonardo.productreviewer.exceptions.ObjectNotFoundException;
 import com.leonardo.productreviewer.inputs.CategoryInput;
 import com.leonardo.productreviewer.models.Category;
 import com.leonardo.productreviewer.repositories.CategoryRepository;
+import com.leonardo.productreviewer.utils.DataIntegrityUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
-public record CategoryService(CategoryRepository repository) implements CrudService<Category, UUID, CategoryInput> {
+public record CategoryService(
+        CategoryRepository repository,
+        DataIntegrityUtils dataIntegrityUtils
+) implements CrudService<Category, UUID, CategoryInput> {
 
     @Override
     public Category create(CategoryInput input) {
+        dataIntegrityUtils.checkNullOrEmptyAndThrowException(input.description(), "O campo descrição é obrigatório.");
+
         return repository.save(
                 Category
                         .builder()
@@ -24,6 +30,8 @@ public record CategoryService(CategoryRepository repository) implements CrudServ
 
     @Override
     public Category update(UUID id, CategoryInput input) {
+        dataIntegrityUtils.checkNullOrEmptyAndThrowException(input.description(), "O campo descrição é obrigatório.");
+
         Category category = this.getById(id);
         category.setDescription(input.description());
         category = repository.save(category);
