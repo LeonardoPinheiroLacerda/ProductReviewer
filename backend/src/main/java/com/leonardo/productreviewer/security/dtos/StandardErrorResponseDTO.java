@@ -7,7 +7,6 @@ import lombok.Data;
 public record StandardErrorResponseDTO(
         Integer status,
         Long timestamp,
-        Object error,
         String message,
         String path
 ) {
