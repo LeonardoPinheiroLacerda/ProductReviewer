@@ -13,6 +13,7 @@ import java.util.UUID;
 @EqualsAndHashCode(of = {"id"})
 
 @Entity
+@Table(name = "properties")
 public class Property {
 
     @Id
