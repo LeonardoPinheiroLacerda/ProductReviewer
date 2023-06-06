@@ -18,7 +18,7 @@ import java.util.TimeZone;
 public class JwtGenerator {
 
     private final SecretKey secretKey;
-    private final JwtConstants jwtConstants;
+    private final JwtConfig jwtConstants;
 
 
     public String generate(Authentication authentication) {
@@ -27,7 +27,7 @@ public class JwtGenerator {
 
         String jwt = Jwts.builder()
                 .setSubject(userDetails.getUsername())
-                .claim(JwtConstants.AUTHORITIES, userDetails.getAuthorities())
+                .claim(JwtConfig.AUTHORITIES, userDetails.getAuthorities())
                 .setIssuedAt(getIssuedAt())
                 .setExpiration(getExpiration())
                 .signWith(secretKey)

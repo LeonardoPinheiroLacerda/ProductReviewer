@@ -1,7 +1,9 @@
 package com.leonardo.productreviewer.security.configs;
 
+import com.leonardo.productreviewer.security.filters.JwtAuthorizationFilter;
 import com.leonardo.productreviewer.security.filters.UsernameAndPasswordAuthenticationFilter;
 import com.leonardo.productreviewer.security.jwt.JwtGenerator;
+import com.leonardo.productreviewer.security.jwt.JwtValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,7 @@ public class SecurityFilterChainConfig {
 
     private final AuthenticationProvider authenticationProvider;
     private final JwtGenerator jwtGenerator;
+    private final JwtValidator jwtValidator;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -29,12 +32,15 @@ public class SecurityFilterChainConfig {
         authenticationFilter.setFilterProcessesUrl("/login");
         authenticationFilter.setPostOnly(true);
 
+        JwtAuthorizationFilter jwtVerifierFilter = new JwtAuthorizationFilter(jwtValidator);
+
         http
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrf -> csrf.disable());
 
-        http.addFilter(authenticationFilter);
-        //TODO: Implement authorization filter
+        http
+                .addFilter(authenticationFilter)
+                .addFilterAfter(jwtVerifierFilter, UsernameAndPasswordAuthenticationFilter.class);
 
         return http.build();
     }

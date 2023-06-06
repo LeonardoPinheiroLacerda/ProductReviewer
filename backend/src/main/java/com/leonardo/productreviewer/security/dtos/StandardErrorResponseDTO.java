@@ -1,7 +1,6 @@
 package com.leonardo.productreviewer.security.dtos;
 
 import lombok.Builder;
-import lombok.Data;
 
 @Builder
 public record StandardErrorResponseDTO(

@@ -13,11 +13,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties("application.jwt")
-public class JwtConstants {
+public class JwtConfig {
 
     private String secretKey;
     private Long tokenExpirationAfterDays;
 
     public static final String AUTHORITIES = "roles";
+    public static final String AUTHORIZATION_HEADER = "Authorization";
 
 }

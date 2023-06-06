@@ -1,6 +1,6 @@
 package com.leonardo.productreviewer.security.configs;
 
-import com.leonardo.productreviewer.security.jwt.JwtConstants;
+import com.leonardo.productreviewer.security.jwt.JwtConfig;
 import io.jsonwebtoken.security.Keys;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import javax.crypto.SecretKey;
 @Configuration
 public class SecretKeyConfig {
 
-    private final JwtConstants jwtConstants;
+    private final JwtConfig jwtConstants;
 
     @Bean
     SecretKey secretKey() {

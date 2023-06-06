@@ -6,7 +6,6 @@ import com.leonardo.productreviewer.security.dtos.JWTResponseDTO;
 import com.leonardo.productreviewer.security.dtos.StandardErrorResponseDTO;
 import com.leonardo.productreviewer.security.jwt.JwtGenerator;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -74,11 +72,11 @@ public class UsernameAndPasswordAuthenticationFilter extends UsernamePasswordAut
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
     }
 
-    public void addResponseBody(HttpServletResponse response, Object object) throws IOException {
+    private void addResponseBody(HttpServletResponse response, Object object) throws IOException {
         response.getOutputStream()
                 .print(
                         new ObjectMapper().writeValueAsString(
-                               object
+                                object
                         )
                 );
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
