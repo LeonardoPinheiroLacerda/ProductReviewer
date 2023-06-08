@@ -8,3 +8,9 @@ spring:
   profiles:
     active:
       - ${PROFILE:dev}
+
+#doc para formatação de log: https://logback.qos.ch/manual/layouts.html
+logging:
+  pattern:
+    console: "%-190(%date{dd.MMMyyyy HH:mm:ss:SSS} %highlight(%level) [%boldWhite(%thread)] %cyan(%logger{0})->%red(%method):%magenta(%line)) : %msg%n"
+#    console: "%-160(%date{dd.MMMyyyy HH:mm:ss:SSS} %highlight(%level) [%boldWhite(%thread)] %cyan(%logger{26}):%magenta(%line)) : %msg%n"
