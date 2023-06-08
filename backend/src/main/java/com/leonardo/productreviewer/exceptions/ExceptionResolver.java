@@ -57,6 +57,7 @@ public class ExceptionResolver extends DataFetcherExceptionResolverAdapter {
                     .build();
 
         }
+
         else {
             return super.resolveToSingleError(ex, env);
         }
