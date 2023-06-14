@@ -37,11 +37,13 @@ public class CategoryController {
     }
 
     @MutationMapping
+    @PreAuthorize("isAuthenticated()")
     public Category updateCategory(@Argument UUID id, @Argument CategoryInput categoryInput) {
         return service.update(id, categoryInput);
     }
 
     @MutationMapping
+    @PreAuthorize("isAuthenticated()")
     public UUID deleteCategory(@Argument UUID id) {
         return service.delete(id);
     }
