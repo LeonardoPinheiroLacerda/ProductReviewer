@@ -52,6 +52,8 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                             .build()
             );
             response.setStatus(HttpStatus.FORBIDDEN.value());
+
+            //TODO: Realizar essa resposta utilizando o formato do graphql
         }
 
 
