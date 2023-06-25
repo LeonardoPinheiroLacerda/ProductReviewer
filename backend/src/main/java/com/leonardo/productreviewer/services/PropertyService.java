@@ -68,8 +68,7 @@ public record PropertyService(
             property.setCategory(categoryService.getById(categoryId));
         }
 
-        property = repository.save(property);
-        return property;
+        return repository.save(property);
     }
 
     @Override

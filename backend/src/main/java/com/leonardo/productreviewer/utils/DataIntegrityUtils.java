@@ -35,6 +35,15 @@ public class DataIntegrityUtils {
 
     }
 
+    public Boolean checkNullOrEmpty(Float field) {
+        try {
+            return field.equals(0f) || field == null;
+        } catch (NullPointerException e) {
+            return true;
+        }
+
+    }
+
     public Boolean checkNull(Object field) {
         return field == null;
     }

@@ -8,3 +8,9 @@ input PropertyInput {
     type :Type
     categoryId: String
 }
+
+input ProductInput {
+    description: String
+    price: Float
+    categoryId: String
+}
