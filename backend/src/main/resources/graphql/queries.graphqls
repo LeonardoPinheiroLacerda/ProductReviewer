@@ -4,4 +4,7 @@ type Query {
 
     getAllProperties: [Property]
     getPropertyById(id :ID): Property
+
+    getAllProducts: [Product]
+    getProductById(id :ID): Product
 }

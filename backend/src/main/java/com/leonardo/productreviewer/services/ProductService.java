@@ -64,6 +64,8 @@ public record ProductService(
 
     @Override
     public Product getById(UUID id) {
+        uuidUtils.parseFromString(id.toString());
+
         return repository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Produto de ID informado não pode ser encontrada."));
     }

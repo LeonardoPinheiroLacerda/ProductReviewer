@@ -6,4 +6,8 @@ type Mutation {
     createProperty(propertyInput: PropertyInput): Property
     updateProperty(id: ID, propertyInput: PropertyInput): Property
     deleteProperty(id: ID): ID
+
+    createProduct(productInput: ProductInput): Product
+    updateProduct(id: ID, productInput: ProductInput): Product
+    deleteProduct(id: ID): ID
 }
