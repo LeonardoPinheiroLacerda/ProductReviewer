@@ -13,3 +13,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: false
+
+application:
+  jwt:
+    secretKey: ${JWT_SECRET_KEY}
+    tokenExpirationAfterDays: ${JWT_EXPIRATION_DAYS}
