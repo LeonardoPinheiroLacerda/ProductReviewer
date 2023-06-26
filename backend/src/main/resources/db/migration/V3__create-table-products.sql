@@ -6,7 +6,7 @@ CREATE TABLE "products" (
 );
 
 ALTER TABLE "products"
-ADD CONSTRAINT "products_pk" PRIMARY KEY (id);
+ADD CONSTRAINT "products_pk" PRIMARY KEY ("id");
 
 ALTER TABLE "products"
 ADD CONSTRAINT "products_category_fk" FOREIGN KEY ("category_id") REFERENCES "categories" ("id");

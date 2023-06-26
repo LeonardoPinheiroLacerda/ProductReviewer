@@ -1,9 +1,9 @@
 CREATE TABLE "properties" (
-    id UUID,
-    category_id UUID,
-    name VARCHAR(32),
-    default_value VARCHAR(32),
-    type VARCHAR(16)
+    "id" UUID,
+    "category_id" UUID,
+    "name" VARCHAR(32),
+    "default_value" VARCHAR(32),
+    "type" VARCHAR(16)
 );
 
 ALTER TABLE "properties"
