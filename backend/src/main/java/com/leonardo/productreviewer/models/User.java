@@ -28,6 +28,7 @@ public class User {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 

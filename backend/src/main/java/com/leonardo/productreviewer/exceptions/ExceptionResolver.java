@@ -77,7 +77,8 @@ public class ExceptionResolver extends DataFetcherExceptionResolverAdapter {
 
     private Map<String, String> constraintsMessages() {
         Map<String, String> messages = new HashMap<>();
-        messages.put("uk_3x7l6yk1oxdxmdh4am3yq2y38", "Já existe uma categoria com este nome.");
+        messages.put("categories_description_unique", "Já existe uma categoria com esta descrição.");
+        messages.put("products_description_unique", "Já existe um produto com esta descrição.");
         return messages;
     }
 }
