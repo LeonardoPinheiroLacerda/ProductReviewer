@@ -9,8 +9,14 @@ type Product {
     description: String!
     price: Float
     category: Category
+    properties: [ProductProperty]
 }
 
+type ProductProperty {
+    product: Product!
+    property: Property!
+    value: String!
+}
 type Property {
     id: ID!
     name :String!

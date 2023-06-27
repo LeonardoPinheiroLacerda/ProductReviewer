@@ -4,6 +4,10 @@ spring:
     url: ${DEV_DB_CONNECTION_STRING:jdbc:postgresql://127.0.0.1:5432/postgres}
     password: ${DEV_DB_PASSWORD:unidunite}
 
+  graphql:
+    graphiql:
+      enabled: true
+
   jpa:
     open-in-view: false
     properties:

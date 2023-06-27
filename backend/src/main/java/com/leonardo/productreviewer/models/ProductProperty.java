@@ -11,6 +11,7 @@ import lombok.*;
 @EqualsAndHashCode(of = {"product", "property"})
 
 @Entity
+@Table(name = "products_properties")
 @IdClass(ProductPropertyPK.class)
 public class ProductProperty {
 

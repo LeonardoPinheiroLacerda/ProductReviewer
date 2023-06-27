@@ -10,4 +10,6 @@ type Mutation {
     createProduct(productInput: ProductInput): Product
     updateProduct(id: ID, productInput: ProductInput): Product
     deleteProduct(id: ID): ID
+
+    setPropertyValue(productPropertyValueInput: ProductPropertyValueInput): Product
 }

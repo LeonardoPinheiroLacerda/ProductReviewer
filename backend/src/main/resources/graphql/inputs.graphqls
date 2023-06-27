@@ -14,3 +14,9 @@ input ProductInput {
     price: Float
     categoryId: String
 }
+
+input ProductPropertyValueInput {
+    productId: String!
+    propertyId: String!
+    value: String!
+}

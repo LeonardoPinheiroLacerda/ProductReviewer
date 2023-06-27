@@ -1,6 +1,7 @@
 package com.leonardo.productreviewer.controllers;
 
 import com.leonardo.productreviewer.inputs.ProductInput;
+import com.leonardo.productreviewer.inputs.ProductPropertyValueInput;
 import com.leonardo.productreviewer.inputs.PropertyInput;
 import com.leonardo.productreviewer.models.Product;
 import com.leonardo.productreviewer.models.Property;
@@ -30,6 +31,12 @@ public class ProductController {
     @QueryMapping
     public List<Product> getAllProducts() {
         return service.getAll();
+    }
+
+    @MutationMapping
+    @PreAuthorize("isAuthenticated()")
+    public Product setPropertyValue(@Argument ProductPropertyValueInput productPropertyValueInput) {
+        return service.setPropertyValue(productPropertyValueInput);
     }
 
     @MutationMapping

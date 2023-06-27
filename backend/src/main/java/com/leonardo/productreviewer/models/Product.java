@@ -3,6 +3,7 @@ package com.leonardo.productreviewer.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -28,5 +29,6 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Set<ProductProperty> properties;
 }
