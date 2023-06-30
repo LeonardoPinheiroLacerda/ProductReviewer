@@ -1,12 +1,15 @@
 package com.leonardo.productreviewer.services;
 
+import com.leonardo.productreviewer.exceptions.MissingDataException;
 import com.leonardo.productreviewer.exceptions.ObjectNotFoundException;
+import com.leonardo.productreviewer.exceptions.PropertyTypeException;
 import com.leonardo.productreviewer.inputs.ProductInput;
 import com.leonardo.productreviewer.inputs.ProductPropertyValueInput;
 import com.leonardo.productreviewer.models.Category;
 import com.leonardo.productreviewer.models.Product;
 import com.leonardo.productreviewer.models.ProductProperty;
 import com.leonardo.productreviewer.models.Property;
+import com.leonardo.productreviewer.models.enums.Type;
 import com.leonardo.productreviewer.repositories.ProductPropertyRepository;
 import com.leonardo.productreviewer.repositories.ProductRepository;
 import com.leonardo.productreviewer.utils.DataIntegrityUtils;
@@ -99,13 +102,40 @@ public record ProductService(
 
     public Product setPropertyValue(ProductPropertyValueInput productPropertyValueInput) {
 
+        //TODO: Validar de acordo com tipagem da property
+
         UUID productId = uuidUtils.parseFromString(productPropertyValueInput.productId());
         UUID propertyId = uuidUtils.parseFromString(productPropertyValueInput.propertyId());
 
-        Product product = getById(productId);
         Property property = propertyService.getById(propertyId);
 
-        ProductProperty productProperty = productPropertyRepository.findByProductAndProperty(product, property);
+        switch(property.getType()){
+            case BOOLEAN:
+                if(productPropertyValueInput.value() != "true" && productPropertyValueInput.value() != "false") {
+                    throw new PropertyTypeException("O tipo dessa propriedade é BOOLEAN logo deve receber como valor 'true' ou 'false'.");
+                }
+                break;
+            case INTEGER:
+                try{
+                    Integer.parseInt(productPropertyValueInput.value());
+                }catch(NumberFormatException e){
+                    throw new PropertyTypeException("O tipo dessa propriedade é INTEGER logo deve receber um valor numérico.");
+                }
+                break;
+            case DOUBLE:
+                try{
+                    Double.parseDouble(productPropertyValueInput.value());
+                }catch(NumberFormatException e){
+                    throw new PropertyTypeException("O tipo dessa propriedade é DOUBLE logo deve receber um valor numérico com casas decimais.");
+                }
+                break;
+        }
+
+
+        Product product = getById(productId);
+
+        ProductProperty productProperty = productPropertyRepository.findByProductAndProperty(product, property)
+                .orElseThrow(() -> new MissingDataException("Essa propriedade não foi criada para este produto."));
 
         productProperty.setValue(productPropertyValueInput.value());
 

@@ -7,12 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface ProductPropertyRepository extends JpaRepository<ProductProperty, UUID> {
 
     @Query("SELECT obj FROM ProductProperty obj WHERE obj.product = ?1 AND obj.property = ?2")
-    public ProductProperty findByProductAndProperty(Product product, Property property);
+    public Optional<ProductProperty> findByProductAndProperty(Product product, Property property);
 
 }
