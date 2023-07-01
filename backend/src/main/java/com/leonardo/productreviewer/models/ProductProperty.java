@@ -28,4 +28,12 @@ public class ProductProperty {
     @Column(nullable = false)
     private String value;
 
+    @Override
+    public String toString() {
+        return "ProductProperty{" +
+                "value='" + value + '\'' +
+                "productId='" + product.getId() + '\'' +
+                "propertyId='" + property.getId() + '\'' +
+                '}';
+    }
 }

@@ -11,6 +11,7 @@ import java.util.UUID;
 @Builder
 @Data
 @EqualsAndHashCode(of = {"id"})
+@ToString(exclude = {"products", "properties"})
 
 @Entity
 @Table(name = "categories")

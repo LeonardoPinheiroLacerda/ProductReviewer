@@ -3,7 +3,9 @@ package com.leonardo.productreviewer.models;
 import com.leonardo.productreviewer.models.enums.Type;
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
+import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -11,6 +13,7 @@ import java.util.UUID;
 @Builder
 @Data
 @EqualsAndHashCode(of = {"id"})
+@ToString(exclude = {"category", "propertyProducts"})
 
 @Entity
 @Table(name = "properties")
@@ -32,4 +35,7 @@ public class Property {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)
+    private Set<ProductProperty> propertyProducts;
 }
